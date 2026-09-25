@@ -123,13 +123,27 @@ h2 {
   gap: 12px;
 }
 
-.gallery img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  background: #ddd;
-  border-radius: 5px;
+.gallery-item {
+  display: block; width: 100%; padding: 0; border: 0; background: transparent;
+  cursor: zoom-in; border-radius: 5px; overflow: hidden;
 }
+.gallery-item img {
+  display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  background: #ddd; border-radius: 5px; transition: transform .2s ease;
+}
+.gallery-item:hover img { transform: scale(1.03); }
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
+  padding: 40px; background: rgba(0,0,0,.88); opacity: 0; visibility: hidden;
+  pointer-events: none; transition: opacity .2s ease, visibility .2s ease;
+}
+.lightbox.open { opacity: 1; visibility: visible; pointer-events: auto; }
+.lightbox img { max-width: 92vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+.lightbox-close {
+  position: absolute; top: 18px; right: 24px; border: 0; background: transparent;
+  color: white; font-size: 42px; line-height: 1; cursor: pointer;
+}
+.no-scroll { overflow: hidden; }
 
 .two-column {
   display: grid;
@@ -146,15 +160,16 @@ h2 {
   columns: 2;
 }
 
-.map-placeholder {
-  min-height: 280px;
-  display: grid;
-  place-items: center;
-  background: #eee;
-  color: var(--muted);
-  border-radius: 6px;
-  margin-top: 20px;
+.map-panel {
+  display: grid; grid-template-columns: 1fr 1.4fr; min-height: 320px; margin-top: 20px;
+  border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--soft);
 }
+.map-info { padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+.map-info h3 { margin: 0 0 8px; font-size: 1.4rem; }
+.map-info p { margin: 4px 0; }
+.map-note { color: var(--muted); font-size: .9rem; margin-bottom: 20px !important; }
+.map-info .button { align-self: flex-start; margin-top: 12px; }
+.map-visual { min-height: 320px; display: grid; place-items: center; background: #f0f0ed; color: var(--muted); font-weight: 600; }
 
 .contact {
   text-align: center;
@@ -181,6 +196,8 @@ footer {
 
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .two-column { grid-template-columns: 1fr; gap: 35px; }
+  .map-panel { grid-template-columns: 1fr; }
+  .map-visual { min-height: 220px; }
   .features { columns: 1; }
 }
 

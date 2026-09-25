@@ -13,9 +13,9 @@
     <div class="hero-content">
       <p class="eyebrow">APARTMENT FOR RENT</p>
       <h1>Beautiful Apartment</h1>
-      <p class="location">Windsor Terrace · Brooklyn, NY</p>
-      <div class="price">$4,400 <span>/ month</span></div>
-      <p class="availability">Available October 15</p>
+      <p class="location">Your Neighborhood · Your City</p>
+      <div class="price">$3,200 <span>/ month</span></div>
+      <p class="availability">Available October 1</p>
       <a class="button" href="#contact">Schedule a Viewing</a>
     </div>
   </header>
@@ -31,16 +31,17 @@
     <section class="section">
       <h2>Photos</h2>
       <div class="gallery">
-        <img src="images/livingroom1.jpeg" alt="Living room">
-        <img src="images/livingroom2.jpeg" alt="Living room">
-        <img src="images/kitchen.jpeg" alt="Kitchen">
-        <img src="images/den.jpeg" alt="Den">
-        <img src="images/bedroom1.jpeg" alt="Bedroom 1">
-        <img src="images/bedroom2.jpeg" alt="Bedroom 2">
-        <img src="images/bathroom.jpeg" alt="Bathroom">
-        <img src="images/balcony.jpeg" alt="Balcony">
-        <img src="images/207ppsw_patio.png" alt="Patio">
-        <img src="images/floormap.jpeg" alt="Floor plan">
+        <button class="gallery-item" type="button" data-full="images/living-room.svg" aria-label="Enlarge living room photo"><img src="images/living-room.svg" alt="Living room"></button>
+        <button class="gallery-item" type="button" data-full="images/kitchen.svg" aria-label="Enlarge kitchen photo"><img src="images/kitchen.svg" alt="Kitchen"></button>
+        <button class="gallery-item" type="button" data-full="images/bedroom.svg" aria-label="Enlarge bedroom photo"><img src="images/bedroom.svg" alt="Bedroom"></button>
+        <button class="gallery-item" type="button" data-full="images/bathroom.svg" aria-label="Enlarge bathroom photo"><img src="images/bathroom.svg" alt="Bathroom"></button>
+        <button class="gallery-item" type="button" data-full="images/dining.svg" aria-label="Enlarge dining area photo"><img src="images/dining.svg" alt="Dining area"></button>
+        <button class="gallery-item" type="button" data-full="images/floor-plan.svg" aria-label="Enlarge floor plan"><img src="images/floor-plan.svg" alt="Floor plan"></button>
+      </div>
+
+      <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" type="button" aria-label="Close enlarged photo">&times;</button>
+        <img id="lightbox-image" src="" alt="">
       </div>
     </section>
 
@@ -49,8 +50,8 @@
         <h2>About the Apartment</h2>
         <p>
           A bright and comfortable apartment in a convenient location.
-          5 min from Fort Hamilton Parkway station (F, G).
-          Facing Prospect Park. Nearby restaurants and coffee shop.
+          Replace this text with your own description of the property,
+          building, neighborhood, transportation, and nearby amenities.
         </p>
       </div>
       <div>
@@ -59,28 +60,56 @@
           <li>Hardwood floors</li>
           <li>Modern kitchen</li>
           <li>Dishwasher</li>
-          <li>Central air conditioning and heater</li>
+          <li>Air conditioning</li>
+          <li>Laundry available</li>
           <li>Plenty of natural light</li>
-          <li>In-building laundry</li>
         </ul>
       </div>
     </section>
 
     <section class="section">
       <h2>Location</h2>
-      <p>Windsor Terrace, Brooklyn, NY. 5 min from Fort Hamilton Parkway station (F, G).</p>
-      <div class="map-placeholder">Map / location information</div>
+      <p>Replace this with the neighborhood, transportation options, and other useful location information.</p>
+      <div class="map-panel">
+        <div class="map-info">
+          <h3>Location</h3>
+          <p>123 Main Street, Brooklyn, NY 11218</p>
+          <p class="map-note">Replace this with the apartment's actual address.</p>
+          <a class="button" href="https://maps.apple.com/?address=123%20Main%20Street%2C%20Brooklyn%2C%20NY%2011218" target="_blank" rel="noopener">Open in Apple Maps</a>
+        </div>
+        <div class="map-visual" aria-label="Map location"><span>Apple Maps</span></div>
+      </div>
     </section>
 
     <section class="contact" id="contact">
       <h2>Interested?</h2>
       <p>Contact us to ask questions or schedule a viewing.</p>
-      <a class="button" href="mailto:207ppsw@proton.me?subject=Apartment%20Inquiry">Contact Me</a>
+      <a class="button" href="mailto:YOUR-EMAIL@example.com?subject=Apartment%20Inquiry">Contact Me</a>
     </section>
   </main>
 
   <footer>
     <p>© 2026 Apartment Rental</p>
   </footer>
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    document.querySelectorAll(".gallery-item").forEach(item => item.addEventListener("click", () => {
+      lightboxImage.src = item.dataset.full;
+      lightboxImage.alt = item.querySelector("img").alt;
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+    }));
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+      lightboxImage.src = "";
+    }
+    document.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && lightbox.classList.contains("open")) closeLightbox(); });
+  </script>
 </body>
 </html>
