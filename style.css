@@ -145,9 +145,9 @@ h2 {
 }
 .no-scroll { overflow: hidden; }
 
-.two-column {
+.three-column {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   background: var(--soft);
   max-width: none;
@@ -157,7 +157,7 @@ h2 {
 
 .features {
   padding-left: 20px;
-  columns: 2;
+  columns: 1;
 }
 
 .map-panel {
