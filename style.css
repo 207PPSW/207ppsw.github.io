@@ -148,7 +148,7 @@ h2 {
 .three-column {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
+  gap: 40px;
   background: var(--soft);
   max-width: none;
   padding-left: max(24px, calc((100% - 1052px) / 2));
@@ -203,7 +203,7 @@ footer {
   .facts div:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
 
   .gallery { grid-template-columns: repeat(2, 1fr); }
-  .two-column { grid-template-columns: 1fr; gap: 35px; }
+  .three-column { grid-template-columns: 1fr; gap: 35px; }
   .map-panel { grid-template-columns: 1fr; }
   .map-visual { min-height: 220px; }
   .features { columns: 1; }
