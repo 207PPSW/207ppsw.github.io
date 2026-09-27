@@ -176,7 +176,7 @@ h2 {
     height: 260px;
     object-fit: cover;
     display: block;
-    margin: 0 auto;
+    margin: 20px 20px 20px auto;
 }
 
 .contact {
@@ -211,6 +211,7 @@ footer {
   .location-panel img {
      width: 80%;
      height: 100px;
+    margin: 5px 5px 5px auto;
   }
 }
 
